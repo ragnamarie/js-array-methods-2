@@ -9,10 +9,16 @@ queryInput.addEventListener("input", (event) => {
 
   const searchString = event.target.value;
 
-  const foundCountry = null;
+  const foundCountries = countries.filter((country) => {
+    if (country.name.toLowerCase().startsWith(searchString.toLowerCase())) {
+      return country.name;
+    }
+  });
 
-  if (foundCountry) {
-    const countryElement = Country(foundCountry);
-    container.append(countryElement);
-  }
+  foundCountries.forEach((foundCountry) => {
+    if (foundCountry) {
+      const countryElement = Country(foundCountry);
+      container.append(countryElement);
+    }
+  });
 });
